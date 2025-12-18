@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - BloomMail</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --primary: #10b981; /* Emerald Green */
+            --primary-dark: #059669;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --bg-sidebar: rgba(255, 255, 255, 0.8);
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --danger-bg: #fee2e2;
+            --danger-text: #991b1b;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --primary: #34d399;
+            --primary-dark: #10b981;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-sidebar: rgba(30, 41, 59, 0.8);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: #334155;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --danger-bg: #450a0a;
+            --danger-text: #fca5a5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- Header & Hero --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* --- Theme Toggle --- */
+        .theme-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+        .theme-btn:hover { transform: scale(1.1); }
+
+        /* --- Main Layout --- */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            padding: 2rem 1rem;
+        }
+
+        /* --- Sidebar Navigation --- */
+        aside {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            background-color: var(--bg-sidebar);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        aside h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links li { list-style: none; margin-bottom: 0.5rem; }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* --- Content Area --- */
+        .content {
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem; /* Fixes sticky header overlap if any */
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h3 { margin: 1.5rem 0 1rem; font-size: 1.25rem; }
+        p { margin-bottom: 1rem; color: var(--text-main); }
+        
+        /* --- Custom List Styles --- */
+        ul.check-list, ul.cross-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        ul.check-list li, ul.cross-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        ul.check-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        ul.cross-list li::before {
+            content: '✖';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        /* --- Warning/Info Box --- */
+        .info-box {
+            background-color: var(--bg-body);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* --- App Meta Data --- */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .meta-item strong { display: block; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
+        .meta-item span { font-weight: 600; font-size: 1.1rem; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a { color: var(--primary); text-decoration: none; }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 850px) {
+            .wrapper { grid-template-columns: 1fr; }
+            aside { display: none; } /* Hide sidebar on mobile */
+            .content { padding: 1.5rem; }
+            h2 { font-size: 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <button class="theme-btn" id="themeToggle" title="Toggle Theme">🌙</button>
+        <div class="hero-content">
+            <h1>Privacy Policy</h1>
+            <p>BloomMail - Temporary Email Service</p>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside>
+            <h3>Table of Contents</h3>
+            <ul class="nav-links">
+                <li><a href="#intro" class="active">Introduction</a></li>
+                <li><a href="#collection">1. Information Collection</a></li>
+                <li><a href="#temp-data">2. Temporary Data</a></li>
+                <li><a href="#permissions">3. Permissions</a></li>
+                <li><a href="#ads">4. Advertisements</a></li>
+                <li><a href="#iap">5. In-App Purchases</a></li>
+                <li><a href="#third-party">6. Third-Party Services</a></li>
+                <li><a href="#children">7. Children’s Privacy</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            
+            <!-- Metadata -->
+            <div class="meta-grid" id="intro">
+                <div class="meta-item">
+                    <strong>App Name</strong>
+                    <span>BloomMail</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Developer</strong>
+                    <span>devnur</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Contact</strong>
+                    <span><a href="mailto:sahanurmiya431@gmail.com" style="color:var(--primary)">Email Us</a></span>
+                </div>
+            </div>
+
+            <p><strong>BloomMail</strong> is a Temporary / Disposable Email application that allows users to generate temporary email addresses and receive emails. We respect user privacy and are committed to protecting it. This document outlines exactly how our app operates regarding your data.</p>
+
+            <!-- Section 1 -->
+            <section id="collection">
+                <h2>1. Information Collection and Use</h2>
+                <p>BloomMail respects your anonymity. We do not directly collect, store, or require any personal user information to use the app.</p>
+                
+                <div style="background: var(--danger-bg); color: var(--danger-text); padding: 15px; border-radius: 8px;">
+                    <strong>The app does NOT collect:</strong>
+                    <ul class="cross-list" style="margin-bottom:0">
+                        <li>Name, Personal email address, or Phone number</li>
+                        <li>Contacts list</li>
+                        <li>Photos, media, or files from the device</li>
+                        <li>Precise location or address</li>
+                        <li>Login credentials or account details</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 1rem;">There is no sign-up or sign-in system in the app.</p>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="temp-data">
+                <h2>2. Temporary Email Data</h2>
+                <p>To provide the core functionality of disposable emails:</p>
+                <ul class="check-list">
+                    <li>All email addresses generated in BloomMail are temporary.</li>
+                    <li>These email addresses are <strong>not linked</strong> to real-world identities.</li>
+                    <li>Emails and mailboxes may be automatically deleted after a certain period.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="permissions">
+                <h2>3. Internet & Permissions</h2>
+                <p>BloomMail uses an internet connection only for essential features:</p>
+                <ul class="check-list">
+                    <li>Generating temporary email addresses</li>
+                    <li>Loading and displaying received emails</li>
+                    <li>Displaying advertisements & processing purchases</li>
+                </ul>
+
+                <h3>Permissions We Do NOT Request</h3>
+                <p>We believe in minimal permissions. We do NOT ask for:</p>
+                <ul class="cross-list">
+                    <li>Camera or Microphone</li>
+                    <li>Location (GPS)</li>
+                    <li>SMS or Call Logs</li>
+                    <li>Storage Access (Personal files)</li>
+                </ul>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="ads">
+                <h2>4. Advertisements</h2>
+                <p>BloomMail is supported by advertisements (e.g., Google AdMob). These third-party networks may collect limited non-personal data such as:</p>
+                <ul>
+                    <li>Advertising ID (AAID)</li>
+                    <li>Device Type</li>
+                    <li>General Usage Data</li>
+                </ul>
+                <div class="info-box">
+                    The developer does not have direct access to or control over data collected by advertising networks.
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="iap">
+                <h2>5. In-App Purchases</h2>
+                <p>We offer optional purchases to remove ads or unlock features. All payments are processed securely by <strong>Google Play Store</strong>.</p>
+                <p><strong>We do NOT store:</strong> Credit cards, bank details, or billing info.</p>
+            </section>
+
+            <!-- Section 6 & 7 -->
+            <section id="third-party">
+                <h2>6. Third-Party Services</h2>
+                <p>We use trusted services like Google AdMob and Google Play Billing. These services operate under their own privacy policies.</p>
+            </section>
+
+            <section id="children">
+                <h2>7. Children’s Privacy</h2>
+                <p>BloomMail does not contain harmful content and is intended for users aged <strong>13+</strong>. As we do not collect personal data, there is no risk of personal data leakage for minors.</p>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>If you have questions about this policy, please reach out:</p>
+                <p>
+                    📧 Email: <a href="mailto:sahanurmiya431@gmail.com" style="color:var(--primary); font-weight:bold;">sahanurmiya431@gmail.com</a><br>
+                    👨‍💻 Developer: <strong>devnur</strong>
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> BloomMail (devnur). All rights reserved.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem;">Changes to this policy will be updated on this page.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Dark Mode Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+            themeToggle.textContent = isDark ? '🌙' : '☀️';
+        });
+
+        // 2. Scroll Spy (Active Link Highlight)
+        const sections = document.querySelectorAll('section, .meta-grid');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
